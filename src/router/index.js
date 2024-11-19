@@ -1,10 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "../App.vue";
-import MinerDetails from "../components/MinerDetails.vue";
+import HomePage from "../views/HomePage.vue";
+import UserDetails from "../views/UserDetails.vue"; // 确保路径正确
 
 const routes = [
-  { path: "/", component: App }, // 首页
-  { path: "/miner/:address", component: MinerDetails, props: true }, // 用户详情页
+  {
+    path: "/",
+    name: "HomePage", // 路由名称也更新
+    component: HomePage,
+  },
+  {
+    path: "/user/:walletAddress", // 添加用户详情页面路由
+    name: "UserDetails",
+    component: UserDetails,
+    props: true, // 允许通过路由参数传递 props
+  },
 ];
 
 const router = createRouter({
